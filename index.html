@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -7,32 +7,33 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar card">
+  <header class="topbar">
     <div class="topbar-inner container">
       <div class="logo">
         <div class="logo-badge">B</div>
         <div>
-          <div style="font-weight:800">Brechó Mobile</div>
+          <div class="logo-title">Brechó Mobile</div>
           <div class="muted" id="sessionRole">Sem sessão</div>
         </div>
       </div>
       <div class="grow"></div>
       <div class="tabs">
-        <button class="btn ghost" id="tabCatalog">Catálogo</button>
-        <button class="btn ghost" id="tabEstoque">Estoque</button>
-        <button class="btn ghost" id="tabCadastro">Cadastrar</button>
-        <button class="btn secondary" id="tabConta">Conta</button>
+        <button class="btn ghost" id="tabCatalog"><a href="catalogo.html">Catálogo</a></button>
+        <button class="btn ghost" id="tabEstoque"><a href="estoque.html">Estoque</a></button>
+        <button class="btn ghost" id="tabEstoque"><a href="cadastroItem.html">Cadastro de item</a></button>
+        <button class="btn ghost" id="tabCadastro"><a href="redes-sociais">Redes Sociais</a></button>
+        <button class="btn secondary" id="tabConta"><a href="index.html">Login</a></button>
       </div>
     </div>
   </header>
 
   <main class="container">
     <!-- LOGIN / CONTA -->
-    <section id="viewAuth" class="card p-20 mb-16">
+    <section id="viewAuth" class="card p-20 mb-16 textos-login">
       <h1>Entrar</h1>
       <p class="muted mb-16">Acesse como <b>Pessoa</b> (cliente) ou <b>Administrador</b>. Os dados ficam apenas no seu dispositivo (localStorage).</p>
       <div class="grid grid-2">
-        <div class="card p-16">
+        <div class="card p-16 centralizado">
           <h2>Pessoa</h2>
           <div class="mb-12">
             <label class="muted">Seu nome</label>
@@ -44,127 +45,17 @@
           </div>
           <button class="btn" id="btnLoginPessoa">Entrar como Pessoa</button>
         </div>
-        <div class="card p-16">
-          <h2>Administrador</h2>
-          <div class="mb-12">
-            <label class="muted">E-mail</label>
-            <input id="admEmail" placeholder="admin@brecho.com" value="admin@brecho.com" />
-          </div>
-          <div class="mb-12">
-            <label class="muted">Senha</label>
-            <input id="admSenha" placeholder="••••••" type="password" value="123456" />
-          </div>
-          <button class="btn" id="btnLoginAdmin">Entrar como Admin</button>
-          <p class="muted" style="margin-top:8px">Padrão: <code>admin@brecho.com</code> / <code>123456</code></p>
-        </div>
-      </div>
     </section>
 
-    <!-- CATÁLOGO (visível a todos) -->
-    <section id="viewCatalog" class="card p-20 mb-16">
-      <div class="grid">
-        <div class="grid grid-2">
-          <div>
-            <h1>Catálogo</h1>
-            <p class="muted">Veja os produtos disponíveis. Pessoas não conseguem editar; administradores podem gerenciar estoque.</p>
-          </div>
-          <div class="pill">
-            <input id="search" placeholder="Buscar por nome ou categoria..." />
-            <select id="filtroCond">
-              <option value="">Condição</option>
-              <option>Novo</option>
-              <option>Semi-novo</option>
-              <option>Usado</option>
-            </select>
-          </div>
-        </div>
-        <div id="catalogList" class="catalog"></div>
-      </div>
-    </section>
+   
 
-    <!-- ESTOQUE (apenas admin) -->
-    <section id="viewEstoque" class="card p-20 mb-16 hide">
-      <div class="grid">
-        <div class="grid grid-2">
-          <div>
-            <h1>Estoque</h1>
-            <p class="muted">Visualize, edite quantidade e remova itens. Linhas em amarelo estão com estoque baixo.</p>
-          </div>
-          <div class="grid grid-2">
-            <div class="pill"><span>Total de itens:</span> <b id="totItens">0</b></div>
-            <div class="pill"><span>Unidades em estoque:</span> <b id="totUnidades">0</b></div>
-          </div>
-        </div>
-        <div class="card p-16">
-          <div style="overflow:auto">
-            <table>
-              <thead>
-                <tr>
-                  <th>Produto</th>
-                  <th>Categoria</th>
-                  <th>Tam.</th>
-                  <th>Condição</th>
-                  <th>Preço (R$)</th>
-                  <th>Qtd</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody id="estoqueBody"></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
+  
 
-    <!-- CADASTRO (apenas admin) -->
-    <section id="viewCadastro" class="card p-20 mb-16 hide">
-      <h1>Cadastrar Produto</h1>
-      <p class="muted mb-16">Preencha os campos para adicionar um item ao estoque.</p>
-      <div class="grid grid-3">
-        <div>
-          <label class="muted">Nome</label>
-          <input id="pNome" placeholder="Ex.: Camisa vintage" />
-        </div>
-        <div>
-          <label class="muted">Categoria</label>
-          <input id="pCat" placeholder="Ex.: Camisas" />
-        </div>
-        <div>
-          <label class="muted">Tamanho</label>
-          <input id="pTam" placeholder="P / M / G / 40 / Único" />
-        </div>
-        <div>
-          <label class="muted">Condição</label>
-          <select id="pCond">
-            <option value="Novo">Novo</option>
-            <option value="Semi-novo">Semi-novo</option>
-            <option value="Usado">Usado</option>
-          </select>
-        </div>
-        <div>
-          <label class="muted">Preço (R$)</label>
-          <input id="pPreco" type="number" min="0" step="0.01" placeholder="0,00" />
-        </div>
-        <div>
-          <label class="muted">Quantidade</label>
-          <input id="pQtd" type="number" min="0" step="1" placeholder="0" />
-        </div>
-        <div class="grid" style="grid-column:1/-1">
-          <label class="muted">Imagem (URL – opcional)</label>
-          <input id="pImg" placeholder="https://..." />
-        </div>
-      </div>
-      <div class="grid grid-2" style="margin-top:12px">
-        <button class="btn" id="btnSalvarProduto">Salvar Produto</button>
-        <button class="btn ghost" id="btnLimparForm">Limpar</button>
-      </div>
-    </section>
+    
 
     <section class="footer muted">
       Feito com ♥️ para seu brechó. Os dados ficam no seu navegador.
     </section>
   </main>
-
-  
 </body>
-</htmlL
+</html>

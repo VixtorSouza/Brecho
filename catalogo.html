@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <header class="topbar">
+    <div class="topbar-inner container">
+      <div class="logo">
+        <div class="logo-badge">B</div>
+        <div>
+          <div class="logo-title">Brechó Mobile</div>
+          <div class="muted" id="sessionRole">Sem sessão</div>
+        </div>
+      </div>
+      <div class="grow"></div>
+      <div class="tabs">
+        <button class="btn ghost" id="tabCatalog"><a href="catalogo.html">Catálogo</a></button>
+        <button class="btn ghost" id="tabEstoque"><a href="estoque.html">Estoque</a></button>
+        <button class="btn ghost" id="tabEstoque"><a href="cadastroItem.html">Cadastro de item</a></button>
+        <button class="btn ghost" id="tabCadastro"><a href="redes-sociais">Redes Sociais</a></button>
+        <button class="btn secondary" id="tabConta"><a href="index.html">Login</a></button>
+      </div>
+    </div>
+  </header>
+     <section id="viewCatalog" class="card p-20 mb-16">
+      <div class="grid">
+        <div class="grid grid-2">
+          <div>
+            <h1>Catálogo</h1>
+            <p class="muted">Veja os produtos disponíveis. Pessoas não conseguem editar; administradores podem gerenciar estoque.</p>
+          </div>
+          <div class="pill">
+            <input id="search" placeholder="Buscar por nome ou categoria..." />
+            <select id="filtroCond">
+              <option value="">Condição</option>
+              <option>Novo</option>
+              <option>Semi-novo</option>
+              <option>Usado</option>
+            </select>
+          </div>
+        </div>
+        <div id="catalogList" class="catalog"></div>
+      </div>
+    </section>
+</body>
+</html>
